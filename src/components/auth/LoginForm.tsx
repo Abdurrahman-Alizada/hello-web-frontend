@@ -6,13 +6,14 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { useLoginUserMutation } from '@/redux/reducers/auth/authThunk';
 import { setUser } from '@/redux/reducers/auth/authSlice';
-import { Button, FormikInput } from '@/components/ui';
+import { Button } from '@/components/ui/Button';
+import { FormikInput } from '@/components/ui/Input';
 import { loginSchema } from '@/lib/validationSchemas';
 import { LoginRequest } from '@/types/auth';
-import { ROUTES } from '@/constants';
+import { ROUTES } from '@/constants/routes';
 import Link from 'next/link';
 
-export const LoginForm: React.FC = () => {
+const LoginForm: React.FC = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [loginUser, { isLoading }] = useLoginUserMutation();
@@ -36,13 +37,7 @@ export const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Sign in to your account
-          </h2>
-        </div>
+    <div className="space-y-6">
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={loginSchema}
@@ -91,7 +86,8 @@ export const LoginForm: React.FC = () => {
             </Form>
           )}
         </Formik>
-      </div>
     </div>
   );
 };
+
+export default LoginForm;

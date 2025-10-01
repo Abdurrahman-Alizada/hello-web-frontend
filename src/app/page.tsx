@@ -1,10 +1,12 @@
-import { Hero, Features } from '@/components/landing';
+import { Hero } from '@/components/landing/Hero';
+import { Features } from '@/components/landing/Features';
+import PublicLayout from '@/components/layout/PublicLayout';
 
 export default function Home() {
   return (
-    <main>
+    <PublicLayout>
       <Hero />
       <Features />
-    </main>
+    </PublicLayout>
   );
 }

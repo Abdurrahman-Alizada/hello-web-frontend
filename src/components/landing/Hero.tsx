@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Button } from '@/components/ui';
-import { ROUTES } from '@/constants';
+import { Button } from '@/components/ui/Button';
+import { ROUTES } from '@/constants/routes';
 
 export const Hero: React.FC = () => {
   return (

@@ -7,12 +7,13 @@ import { Formik, Form, Field } from 'formik';
 import { useSignupUserMutation } from '@/redux/reducers/auth/authThunk';
 import { setUser } from '@/redux/reducers/auth/authSlice';
 import { RegisterRequest } from '@/types/auth';
-import { Button, FormikInput } from '@/components/ui';
+import { Button } from '@/components/ui/Button';
+import { FormikInput } from '@/components/ui/Input';
 import { registerSchema } from '@/lib/validationSchemas';
-import { ROUTES } from '@/constants';
+import { ROUTES } from '@/constants/routes';
 import Link from 'next/link';
 
-export const RegisterForm: React.FC = () => {
+const RegisterForm: React.FC = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [signupUser, { isLoading }] = useSignupUserMutation();
@@ -43,13 +44,7 @@ export const RegisterForm: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Create your account
-          </h2>
-        </div>
+    <div className="space-y-6">
         <Formik
           initialValues={{ name: '', email: '', password: '', confirmPassword: '' }}
           validationSchema={registerSchema}
@@ -58,7 +53,7 @@ export const RegisterForm: React.FC = () => {
           {({ status, errors, isValid, isSubmitting }) => {
             console.log('Form state:', { errors, isValid, isSubmitting });
             return (
-            <Form className="mt-8 space-y-6">
+              <Form className="mt-8 space-y-6">
               <div className="space-y-4">
                 <Field
                   name="name"
@@ -111,11 +106,12 @@ export const RegisterForm: React.FC = () => {
                   </Link>
                 </p>
               </div>
-            </Form>
+              </Form>
             );
           }}
         </Formik>
-      </div>
     </div>
   );
 };
+
+export default RegisterForm;

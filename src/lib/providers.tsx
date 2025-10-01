@@ -19,7 +19,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
         try {
           const parsedUser = JSON.parse(user);
           dispatch(setUser(parsedUser));
-        } catch (error) {
+        } catch {
           // Clear invalid data
           localStorage.removeItem('authToken');
           localStorage.removeItem('authUser');

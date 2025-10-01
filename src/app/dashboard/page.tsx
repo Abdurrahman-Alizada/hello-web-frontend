@@ -19,7 +19,6 @@ export default function DashboardPage() {
                   <p><strong>Email:</strong> {user.email}</p>
                   <p><strong>Role:</strong> {user.role}</p>
                   <p><strong>Email Verified:</strong> {user.isEmailVerified ? 'Yes' : 'No'}</p>
-                  <p><strong>Last Login:</strong> {user.lastLoginAt ? new Date(user.lastLoginAt).toLocaleString() : 'Never'}</p>
                 </div>
               </div>
             ) : (
